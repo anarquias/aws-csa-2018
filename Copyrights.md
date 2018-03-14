@@ -1,5 +1,6 @@
-# aws-csa-2017
-## Notes Taken while studying the content on the acloud.guru website.
+# aws-csa-2018
+## Built upon the work of @agasthik 
+Notes Taken while studying for aws csa 2018 with the help of udemy course ttps://www.udemy.com/aws-certified-solutions-architect-associate
 
 ### I do not claim any copy-rights to the content above. The course content is the property of `A Cloud Guru Ltd`
 
