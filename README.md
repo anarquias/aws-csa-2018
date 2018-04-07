@@ -609,6 +609,7 @@ Using Access Key ID and Secret Access Key – can be used only via accessing pro
 ## S3 101
 
 ### https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html
+
 ### S3 Object Storage Classes
 
 * Unlimited Storage
@@ -653,7 +654,6 @@ Using Access Key ID and Secret Access Key – can be used only via accessing pro
 
 * Use multipart-uploads for faster uploads
 
-
 ### S3 Consistency Model
 
 * Read-after-write consistency for PUTS of new objects.
@@ -680,11 +680,11 @@ Using Access Key ID and Secret Access Key – can be used only via accessing pro
 
 * The following table describes the characteristics of eventually consistent read and consistent read.
 
-  |Eventually Consistent Read |	Consistent Read
-  |-------------------------- | ---------------
-  |Stale reads possible	      | No stale reads
-  |Lowest read latency	      | Potential higher read latency
-  |Highest read throughput	  | Potential lower read throughput
+  |Eventually Consistent Read| Consistent Read
+  |--------------------------| ---------------
+  |Stale reads possible      | No stale reads
+  |Lowest read latency       | Potential higher read latency
+  |Highest read throughput   | Potential lower read throughput
 
 ### S3 Stroage Classes
 
@@ -696,14 +696,12 @@ Using Access Key ID and Secret Access Key – can be used only via accessing pro
 
 * REDUCED_REDUNDANCY – The Reduced Redundancy Storage (RRS) storage class is designed for noncritical, reproducible data stored at lower levels of redundancy.
 
-
-  |Storage Class	| Durability (designed for)	| Availability (designed for)	| Other Considerations
-  |---            | ---                       | ---                         | ---
-  |STANDARD       | 99.999999999%             | 99.99%  | None
-  |STANDARD_IA    | 99.999999999%             | 99.9%   | There is a retrieval fee associated with STANDARD_IA objects which makes it most suitable for infrequently accessed data.
-  |GLACIER        | 99.999999999%             | 99.99% (after you restore objects) | GLACIER objects are not available for real-time access. They need to be restored before access.
-  |RRS            | 99.99%                    | 99.99% | None
-
+|Storage Class  | Durability (designed for) | Availability (designed for) | Other Considerations
+|---            | ---                       | ---                         | ---
+|STANDARD       | 99.999999999%             | 99.99%  | None
+|STANDARD_IA    | 99.999999999%             | 99.9%   | There is a retrieval fee associated with STANDARD_IA objects which makes it most suitable for infrequently accessed data.
+|GLACIER        | 99.999999999%             | 99.99% (after you restore objects) | GLACIER objects are not available for real-time access. They need to be restored before access.
+|RRS            | 99.99%                    | 99.99% | None
 
 ### S3 Versioning
 
@@ -781,7 +779,7 @@ Using Access Key ID and Secret Access Key – can be used only via accessing pro
 
 * Origin domain name – either S3 bucket, ELB or on premise domain
 
-### CloudFront Security.
+### CloudFront Security
 
 * You can force them to use CDN URL instead of S3 DNS
 
@@ -867,6 +865,7 @@ Next version of Import / Export Gateway
 You could accelerate moving large amounts of data into and out of AWS using portable storage devices for transport. Ship the storage device – no need to transfer over the internet.  Problem arose with different types of disks
 
 ### Snowball Standard
+
 * Bigger than briefcase sized storage devices
 * Petabyte scale data transport solution used to transfer data in/out of AWS
 * Cost is 1/5th as compared to transfer via high speed internet.
@@ -874,16 +873,16 @@ You could accelerate moving large amounts of data into and out of AWS using port
 * Multiple layers of security to protect data. Tamper resistant enclosure, 256-bit encryption
 * Once data is transferred, AWS performs software erasure of Snowball appliance.
 
-
 ### Snowball Edge
+
 * 100 TB data transfer device which has onboard storage and compute capabilities.
 * Move large amounts of data in and out of AWS, as a temporary storage tier for large local datasets.
 * You can run Lambda functions.
 * Devices connect to existing applications and infrastructure using standard storage interfaces.
 * Snowball Edges can be clustered together to process your data on premise
 
-
 ### Snowmobile
+
 * Massive 45 foot long ruggedized shipping container, pulled by a truck.
 * Petabyte or Exabyte of data that has to be transferred to AWS. 100 PB per snowmobile.
 * You can use it for data center migration.
@@ -904,6 +903,7 @@ The farther you are from S3 bucket region the higher is the improvement you can 
 * S3 scales infinitely (Good use case for hosting static content for large users)
 
 ## S3 FAQ
+
 https://aws.amazon.com/s3/faqs/
 
 # EC2 – The Backbone of AWS
@@ -949,8 +949,8 @@ https://aws.amazon.com/s3/faqs/
 
 |Sr. No| Family| Specialty| Use Case| Type|
 | ------------- |:-------------:| -----:|-----:|-----:|
-|1 |D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
-|2| R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
+|1|D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
+|2|R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
 |3|M4. M3|General Purpose|Application Servers|General Purpose|
 |4|C4, C3|Compute Optimized|CPU Intensive Apps, DBs|Compute O|
 |5|G2|Graphics Intensive|Video Encoding / 3D Application Streaming||
@@ -960,44 +960,15 @@ https://aws.amazon.com/s3/faqs/
 |9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
 |10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
 
+Acronym – **DIRT MCG FPX**
 
-Acronym – **DIRT MCG FPX*  * 	
-
-*D – Density , I  * IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute,  G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory*  * *
+*D – Density , I  * IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute,  G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory* * *
 
 Use M3 for general purpose instances – balanced compute, memory and network resources
 
 [Exam Tip] You will be asked to provide which instance type to use for a given scenario. Usually 3 options are fictitious.
 
-EC2 Key Pairs are region specific
-
-## EBS
-
-* Block based storage
-
-* You can install OS, Database on it, unlike S3
-
-* Placed in specific AZ. Automatically replicated within the AZ to protect from failure.
-
-* [Exam Tips]*  * EBS Volume Types**
-
-SSD Drives
-
-* (root volume) General Purpose SSD – up to 10,000 IOPS. 3 IOPS per GB. Balances price and performance. You can burst upto 3000 IOPS for 1GB
-
-* (root volume) Provisioned SSD – when you need more than 10,000 IOPS. Large RDBMS DBs and NoSQL DBs. Up to 20000 IOPS now
-
-Magnetic Drives
-
-* HDD, Throughput Optimized– ST1 – Required for data written in sequence. Big Data, DWH, Log processing. Cannot be used as boot volumes
-
-* HDD, Cold– SC1 – Data that isn’t frequently accessed. E.g. File Server. Cannot be used as boot volume
-
-* (root volume) HDD, Magnetic (Standard) – *Cheapest bootable EBS volume type*. Used for apps where data is less frequently accessed and low cost is important.
-
-* You cannot mount 1 EBS volume to multiple EC2 Instances. Use EFS instead.
-
-* EBS Root Volumes can be encrypted on custom AMIs only. Not on the default available AMIs. To encrypt root volumes, create a new AMI and encrypt root volume. You can also encrypt using 3rd party software like Bit Locker. Additional volumes attached to EC2 instance can be encrypted.
+* EC2 Key Pairs are region specific
 
 * EC2 – 1 subnet equals 1 Availability Zone.
 
@@ -1005,23 +976,73 @@ Magnetic Drives
 
 * Default CloudWatch monitoring – every 5 mins. Can enabled advanced monitoring to check at interval of each minute.
 
-* Volume – Virtual Hard Disk
-
-* Tag everything on AWS
-
 * Default Linux EC2 username is ec2-user
 
 * Default Windows EC2 username is Administrator
 
 * Termination protection is turned off by default. You need to turn it on.
 
-* When instance is terminated, root volume is deleted. You can turn if off.
+* When instance is terminated, root volume is deleted. You can chnage this setting.
 
 * System Status Check – Overall health of hosting infrastructure. If they arise, Terminate instance and recreate
 
 * Instance Status Check – Health of instance. If they arise, reboot the instance.
 
-## EC2 Security Groups
+## EBS
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html
+
+* Provides block level storage volumes for use with EC2 instances.
+
+* You can install OS, Database on it, unlike S3
+
+* Placed in specific AZ. Automatically replicated within the AZ to protect from failure.
+
+* Can be attached to any running instance that is in the same Availability Zone
+
+* Volumes that are attached to an EC2 instance are exposed as storage volumes and persist independently from the life of the instance.
+
+* EBS Volume Types**
+
+  * SSD Drives
+
+    * General Purpose SSD (gp2) [bootable] – up to 10,000 IOPS. 3 IOPS per GB. Balances price and performance. You can burst upto 3000 IOPS for 1GB. Ideal for boot volumes, small and medium-size databases, and development and test environments.
+
+    * Provisioned IOPS SSD (io1) [bootable] - Provisioned SSD – when you need more than 10,000 IOPS. Large RDBMS DBs and NoSQL DBs. Up to 20000 IOPS now
+
+  * Magnetic Drives
+
+    * Throughput Optimized HDD (st1) [non-bootable] - Required for data written in sequence. Good fit for large, sequential workloads such as Amazon EMR, ETL, data warehouses, and log processing. *Cannot be used as boot volumes*
+
+    * Cold HDD (sc1) [non-bootable] – Data that isn’t frequently accessed. E.g. File Server. *Cannot be used as boot volume*
+
+    * Magnetic (Standard) [bootable] – *Cheapest bootable EBS volume type*. Used for apps where data is less frequently accessed and low cost is important.
+
+* When EC2 instance is terminated, root volume is deleted by dwefault. This can be changed.
+
+* You can mount multiple volumes on the same instance, but each volume can be attached to only one instance at a time.
+
+* You *cannot* mount 1 EBS volume to multiple EC2 Instances. Use EFS instead.
+
+* You can dynamically change the configuration of a volume attached to an instance
+
+* EBS Root Volumes can be encrypted on custom AMIs only. Not on the default available AMIs. To encrypt root volumes, create a new AMI and encrypt root volume. You can also encrypt using 3rd party software like Bit Locker. Additional volumes attached to EC2 instance can be encrypted.
+
+* EBS volumes behave like raw, unformatted block devices. You can create a file system on top of these volumes, or use them in any other way you would use a block device (like a hard drive).
+
+* You can create point-in-time snapshots of EBS volumes, which are persisted to Amazon S3. Snapshots protect data for long-term durability, and they can be used as the starting point for new EBS volumes. The same snapshot can be used to instantiate as many volumes as you wish.
+
+* Snapshots are used to copy EBS volumes across AWS regions.
+
+* EBS volumes are created in a specific Availability Zone, and can then be attached to any instances in that same Availability Zone.
+
+* To make a volume available outside of the Availability Zone, you can create a snapshot and restore that snapshot to a new volume anywhere in that region.
+
+* You can copy snapshots to other regions and then restore them to new volumes there (geographical expansion, data center migration, and disaster recovery).
+
+* Performance metrics, such as bandwidth, throughput, latency, and average queue length, are provided by Amazon CloudWatch.
+
+# EC2 Security Groups
 
 * A security group is a virtual firewall.
 
